@@ -6,9 +6,13 @@ import sys
 
 
 class MyListener(coolListener):
-    def enterAttribute(self, ctx:coolParser.AttributeContext):
-        if ctx.ID().getText() == 'self':
-            raise Exception('Error: self usado como nombre de variable')
+    #def enterKlass(self, ctx: coolParser.KlassContext):
+        #if ctx.TYPE(0).getText() == 'Object':
+            #raise Exception('Object illegal')
+
+    def enterKlass(self, ctx: coolParser.KlassContext):
+        if ctx.TYPE(1).getText() == 'String':
+            raise Exception('illegal inheritance on the class')
 
 
 def main(argv):
@@ -22,4 +26,5 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main('../../resources/semantic/input/anattributenamedself.cool')
+    main('../../resources/semantic/input/inheritsstring.cool')
+    #main('../../resources/semantic/input/redefinedobject.cool')
