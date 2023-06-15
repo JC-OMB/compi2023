@@ -11,8 +11,12 @@ class TreePrinter(HTMLParserListener):
         pass
 
     def enterHtmlAttribute(self, ctx:HTMLParser.HtmlAttributeContext):
-        if ctx.TAG_NAME().getText() == "style":
-            print(ctx.ATTVALUE_VALUE().getText())
+        """if ctx.TAG_NAME().getText() == "style":
+            print(ctx.ATTVALUE_VALUE().getText())"""
+        if ctx.TAG_NAME().getText() == "a":
+            print(ctx.TAG_NAME())
+        else:
+            pass
 
 def main(argv):
     parser = HTMLParser(CommonTokenStream(HTMLLexer(FileStream("test.html"))))
